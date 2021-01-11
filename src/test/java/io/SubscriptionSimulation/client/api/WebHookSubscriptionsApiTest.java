@@ -34,7 +34,8 @@ public class WebHookSubscriptionsApiTest {
     @Test
     public void postSubscriptionTest() {
         Subscription enrollment = new Subscription();
-        enrollment.setEventType("mx.com.ourdomain.api");
+        
+        enrollment.setEventType("mx.com.circulodecredito.eva");//[ mx.com.circulodecredito.eva, mx.com.circulodecredito.ada ]
         enrollment.setWebHookUrl("https://yourdomain.com/v1/notifications");
         enrollment.setEnrollmentId(UUID.randomUUID());
         
