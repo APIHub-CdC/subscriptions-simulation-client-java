@@ -44,19 +44,26 @@ public class WebHookSubscriptionsApiTest {
         	SubscriptionAcknowledge subsAck = api.postSubscription(this.xApiKey, enrollment, xWebhookJwtAuth);
         	Assert.assertNotNull(subsAck);
             logger.info(subsAck.toString());
+
+            
             this.subscriptionId = subsAck.getSubscription().getSubscriptionId();
             Assert.assertNotNull(this.subscriptionId);
+
+
             if(this.subscriptionId != null) {
+                //GET ID
             	Subscription subsResponse = api.getSubscription(this.xApiKey, this.subscriptionId.toString());
             	Assert.assertNotNull(subsResponse);
                 logger.info(subsResponse.toString());
                 
-                String page = "3";
-                String perPage = "5";
+                //GET LIST
+                String page = "1";
+                String perPage = "5";                
                 SubscriptionsMetadata response = api.getSubscriptions(this.xApiKey, page, perPage);
                 Assert.assertNotNull(response);
                 logger.info(response.toString());
                 
+                //DELETE ID
                 SubscriptionAcknowledge deletionResponse = api.deleteSubscription(this.xApiKey, this.subscriptionId.toString());
             	Assert.assertNotNull(deletionResponse);
                 logger.info(deletionResponse.toString());
